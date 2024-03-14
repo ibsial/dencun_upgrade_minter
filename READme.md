@@ -1,5 +1,5 @@
 ## ethereum-dencun-upgrade auto minter
-
+[Mint manually here](https://consensys.io/ethereum-dencun-upgrade)
 ### you can mint both: Linea and Ethereum NFTs using this script
 
 ### What's inside
