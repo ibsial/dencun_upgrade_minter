@@ -1,0 +1,6 @@
+node_modules
+typechain
+
+*.txt
+!example.privates.txt
+!example.proxies.txt
