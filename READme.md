@@ -12,7 +12,7 @@
 ### installation & setup
 `npm i`  
 rename `example.proxies.txt` --> `proxies.txt`  
-rename `example.privates.txt` --> `privates.txt`
+rename `example.privates.txt` --> `privates.txt`  
 setup `config.ts`
 
 
