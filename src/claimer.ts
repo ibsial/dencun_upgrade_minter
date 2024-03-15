@@ -115,7 +115,8 @@ async function checkAndClaim(id: number, signer: Wallet, network: 'ethereum' | '
         let eligible = await isEligible(signer, network, proxy)
         if (eligible.isEligible && eligible.quantityClaimed < eligible.quantityAllowed) {
             console.log(c.blue(`[${id}] ${signer.address} eligible to mint ${c.underline(network)} NFT. Already minted: ${eligible.quantityClaimed}`))
-            return claimNft(signer, network, proxy)
+            let res = await claimNft(signer, network, proxy)
+            return res
         } else {
             console.log(c.yellow(`[${id}] ${signer.address} Not eligible to mint ${c.underline(network)} NFT`))
             return ''
