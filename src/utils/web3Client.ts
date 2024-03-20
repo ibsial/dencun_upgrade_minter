@@ -1,4 +1,4 @@
-import {ERC20__factory} from '../../typechain'
+import {ERC1155__factory, ERC20__factory} from '../../typechain'
 import {ethers, Wallet, JsonRpcProvider, TransactionRequest, parseUnits, BigNumberish, TransactionResponse, formatUnits} from 'ethers'
 import {defaultSleep, retry} from './helpers'
 require('dotenv').config()
@@ -12,6 +12,10 @@ async function getTokenBalance(signerOrProvider: Wallet | JsonRpcProvider, token
     const tokenContract = ERC20__factory.connect(tokenAddress, signerOrProvider)
     return tokenContract.balanceOf(address)
 }
+async function get1155TokenBalance(signerOrProvider: Wallet | JsonRpcProvider, tokenAddress: string, address: string, index: number): Promise<bigint> {
+    const tokenContract = ERC1155__factory.connect(tokenAddress, signerOrProvider)
+    return tokenContract.balanceOf(address, index)
+}
 async function getBalance(signerOrProvider: Wallet | JsonRpcProvider, address: string, tokenAddress?: string): Promise<bigint> {
     return retry(
         async () => {
@@ -20,6 +24,14 @@ async function getBalance(signerOrProvider: Wallet | JsonRpcProvider, address: s
             } else {
                 return getNativeBalance(signerOrProvider, address)
             }
+        },
+        {maxRetries: 20, retryInterval: 10}
+    )
+}
+async function getBalance1155(signerOrProvider: Wallet | JsonRpcProvider, address: string, tokenAddress: string, index: number): Promise<bigint> {
+    return retry(
+        async () => {
+                return get1155TokenBalance(signerOrProvider, tokenAddress, address, index)
         },
         {maxRetries: 20, retryInterval: 10}
     )
@@ -190,4 +202,4 @@ async function waitGasPrice(signerOrProvider: Wallet | JsonRpcProvider, want: bi
         }
     }
 }
-export {getNativeBalance, getBalance, waitBalance, approve, transfer, sendTx, waitGasPrice}
+export {getNativeBalance, getBalance, getBalance1155, waitBalance, approve, transfer, sendTx, waitGasPrice}

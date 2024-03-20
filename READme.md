@@ -23,6 +23,10 @@ setup `config.ts`
 > Linea mints happen with an unknown delay. It may take a long time to mint multiple NFTs  
 
 
+## get stats in linea chain
+`npm run stats`
+
+
 ## Donos and contact
 
 > telegram: **https://t.me/findmeonchain**  

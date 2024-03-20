@@ -9,12 +9,12 @@ export const maxGwei = {
     linea: '2.5'
 }
 
-export const mintEthereum = true
+export const mintEthereum = false
 export const mintLinea = {
     amount: 3,
     delay: {from: 15, to: 30} // seconds
 }
-export const sleepBetweenWallets = {from: 5 * 60, to: 20 * 60} // seconds
+export const sleepBetweenWallets = {from: 3 * 60, to: 10 * 60} // seconds
 
 export const RPCs = {
     ethereum: 'https://ethereum.blockpi.network/v1/rpc/public',

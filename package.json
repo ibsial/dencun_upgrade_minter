@@ -2,6 +2,7 @@
   "author": "github: ibsial | telegram: @findmeonchain",
   "scripts": {
     "start": "npx typechain --target ethers-v6 --out-dir typechain './src/utils/abi/*.json' && npx ts-node ./index.ts",
+    "stats": "npx typechain --target ethers-v6 --out-dir typechain './src/utils/abi/*.json' && npx ts-node ./checker.ts",
     "dev": "",
     "postinstall": ""
   },
